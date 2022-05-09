@@ -36,6 +36,7 @@ async function run() {
         })
 
 
+        //post
         app.post('/inventories', async (req, res) => {
             const newInventorie = req.body;
             const result = await inventoriesCollection.insertOne(newInventorie);
@@ -43,6 +44,7 @@ async function run() {
         });
 
 
+        //update
         app.put('/inventories/:id', async (req, res) => {
             const id = req.params.id;
             const updatedUser = req.body;
@@ -56,6 +58,14 @@ async function run() {
             const result = await inventoriesCollection.updateOne(filter, updatedDoc, options);
             res.send(result);
 
+        })
+
+        //delete
+        app.delete('/inventories/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await inventoriesCollection.deleteOne(query);
+            res.send(result);
         })
 
     }
