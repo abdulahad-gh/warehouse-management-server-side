@@ -68,6 +68,15 @@ async function run() {
             res.send(result);
         })
 
+        //get elements for every single user
+        app.get('/myItems/:email', async (req, res) => {
+            const email = req.params.email;
+            console.log(email)
+            const result = await inventoriesCollection.find({ email: email }).toArray();
+            res.send(result)
+
+        })
+
     }
     finally {
 
