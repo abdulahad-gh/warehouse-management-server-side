@@ -87,7 +87,7 @@ run().catch(console.dir)
 
 
 app.get('/', (req, res) => {
-    res.send('server ok')
+    res.send('laptop-warehouse-server')
 })
 app.listen(port, () => {
     console.log('server running')
